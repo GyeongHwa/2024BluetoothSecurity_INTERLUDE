@@ -1,0 +1,51 @@
+준비사항: 관리자 권한 virtualbox에 kali linux 설치
+
+001.png
+virtualbox를 관리자 권한으로 실행
+
+002.png
+kali linux를 선택하고 [설정] 클릭
+
+003.png
+[포트] > [USB]를 선택하고 USB 컨트롤러는 나의 블루투스 어댑터 사양에 맞춰 설정(사양을 알 수 없다면 일반적으로 USB2.0 또는 3.0 선택)
+USB 장치 필터에 나의 블루투스 어댑터 추가 후 [확인] 클릭
+
+004.png
+kali linux 시작
+터미널 실행
+
+005.png
+명령어 입력: hciconfig
+
+006.png
+명령어 입력: sudo hciconfig hci0 up
+명령어 입력: hciconfig
+
+007.png
+명령어 입력: service bluetooth status
+
+008.png
+명령어 입력: service bluetooth start
+명령어 입력: service bluetooth status
+
+> 여기까지 하면 bluetooth 사용 가능한 상태
+
+
+009.png
+명령어 입력: hcitool scan
+MAC주소 복사
+
+
+> 이제 pybluez 예제를 이용해서 해당 기기와 블루투스 통신을 해본다.
+(예제는 이 블로그의 코드를 응용해서 만들었음. https://blog.naver.com/cjinnnn/223047209187)
+예제 파일 HelloWorld.py 저장
+
+010.png
+명령어 입력: gedit HelloWorld.py &
+find_service함수의 address 파라미터 값에 복사해둔 MAC주소를 문자열 형태로 붙여넣고 저장
+
+011.png
+명령어 입력: python3 HelloWorld.py
+결과 확인
+
+
